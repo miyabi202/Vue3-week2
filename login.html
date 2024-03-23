@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--設置頁面在各種設備上的顯示方式，讓內容自適應設備的寬度並初始化縮放為 1.0。-->
+  <title>Week2 vue hw</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    html,
+    body {
+      height: 100%;
+      text-align: center;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!--這是 Bootstrap 框架提供的一個類名，用於定義一個行（row）。行是用於將網頁內容水平排列的容器。
+        class="justify-content-center"：這是 Bootstrap 的一個內置類，
+          用於指定元素內容在行內居中對齊。通過這個類，內容將在行的水平方向上居中對齊。-->
+        <h1 class="h3 mb-3 font-weight-normal">
+          <!--font-weight-normal 表示字體的粗細為正常。-->
+          請先登入
+        </h1>
+        <div class="col-8"><!--col-8 表示該列將佔用父級容器的 8/12 的寬度-->
+          <form id="form" class="form-signin" @submit.prevent="login">
+            <!--@submit 是 Vue 中的縮寫，相當於 v-on:submit，它用於監聽表單的提交
+              事件。.prevent 是事件修飾符之一，表示調用事件處理函數時調用
+               event.preventDefault() 方法，從而阻止表單的默認提交行為。
+               "login" 是在表單提交時要調用的 Vue 實例中的一個方法或函數名。
+               當表單提交時，這個方法將被觸發並執行相應的邏輯。-->
+            <div class="form-floating mb-3">
+              <!--form-floating 是 Bootstrap 框架提供的一個類，用於創建浮動標籤效果的表單輸入框。
+                當輸入框有值時，標籤文字會浮動到輸入框的頂部，給用戶提供更好的可視性和使用體驗。
+
+               而 mb-3 是 Bootstrap 的一個類，用於設置元素底部的外邊距。mb 代表 margin-bottom（底部外邊距），3 表示外邊距的大小，Bootstrap 根據這個數字提供了不同的外邊距大小。在這裡，mb-3 表示底部外邊距大小為 3 倍的默認大小。-->
+              <input type="email" class="form-control" id="username"
+                v-model="user.username"
+                placeholder="name@example.com" required autofocus>
+              <label for="username">Email address</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="password"
+                v-model="user.password"
+                placeholder="Password" required>
+              <label for="password">Password</label>
+            </div>
+            <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
+              登入
+            </button>
+          </form>
+        </div>
+      </div>
+      <p class="mt-5 mb-3 text-muted">
+        &copy; 2023~∞ - 六角學院
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <script src="./login.js" type="module"></script>
+</body>
+
+</html>
